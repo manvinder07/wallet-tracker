@@ -13,10 +13,10 @@ const Info = ({wallet, data, transactions}) => {
             </p>
         </div>
         <div className="info-balance">
-            <p>Balance: {data !== null && data.result * 10e-18 + " ETH"}</p>
+            <p>Balance: {data !=== null && data.result * 10e-18 + " ETH"}</p>
         </div>
         <h3>Transactions</h3>
-        {transactions?.status == "0" ? "No Transactions" : transactions?.result.
+        {transactions?.status === "0" ? "No Transactions" : transactions?.result.
         map((transaction) => (
             <Transactions data={transaction}/>
         ))}
