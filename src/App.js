@@ -14,7 +14,7 @@ function App() {
   function getWalletData(wallet) {
     fetch(`https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${process.env.REACT_APP_API_KEY}`)
     .then((res) => res.json()).then((data) => {
-      if (data.status == "0") {
+      if (data.status === "0") {
         alert(data.result);
       } else {
           setData(data);
