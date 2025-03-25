@@ -12,7 +12,9 @@ const Info = ({ wallet, data, transactions }) => {
         </p>
       </div>
       <div className="info-balance">
-        <p>Balance: {data !== null && data.result * 10e-18 + " ETH"}</p>
+        <p>
+          Balance: {data !== null && (data.result / 1e18).toFixed(2) + " ETH"}
+        </p>
       </div>
       <h3>Transactions</h3>
       {transactions?.status === "0"
