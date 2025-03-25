@@ -3,7 +3,7 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main # Change this if your branch name is different
+      - main  # Change this if your branch name is different
 
 permissions:
   contents: write
