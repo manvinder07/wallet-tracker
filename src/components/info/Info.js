@@ -5,23 +5,20 @@ import "./info.css";
 const Info = ({ wallet, data, transactions }) => {
   return (
     <div className="info">
-      <div className="info-address">
-        <p>
-          Address:{" "}
-          <a href={`https://www.etherscan.io/address/${wallet}`}>{wallet}</a>
-        </p>
-      </div>
       <div className="info-balance">
         <p>
           Balance: {data !== null && (data.result / 1e18).toFixed(2) + " ETH"}
         </p>
       </div>
-      <h3>Transactions</h3>
-      {transactions?.status === "0"
-        ? "No Transactions"
-        : transactions?.result.map((transaction) => (
+      <div className="transactions-container">
+        {transactions?.status === "0" ? (
+          <p className="no-transactions-p">No transactions found.</p>
+        ) : (
+          transactions?.result.map((transaction) => (
             <Transactions data={transaction} />
-          ))}
+          ))
+        )}
+      </div>
     </div>
   );
 };

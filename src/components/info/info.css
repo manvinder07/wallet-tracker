@@ -1,5 +1,36 @@
 .info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 100%;
+    color: black;
+  }
+
+  .transactions-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between transactions */
+    margin-top: 20px;
+  }
+  
+  .info-address a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .info-balance {
+    font-size: 30px;
+    color: white;
+    font-family: 'Lato';
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  h3 {
+    margin-top: 20px;
+    font-size: 22px;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+  }

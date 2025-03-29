@@ -1,5 +1,5 @@
-import './App.css';
-import {useState} from "react";
+import "./App.css";
+import { useState } from "react";
 import Info from "./components/info/Info";
 
 function App() {
@@ -12,28 +12,50 @@ function App() {
   }
 
   function getWalletData(wallet) {
-    fetch(`https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${process.env.REACT_APP_API_KEY}`)
-    .then((res) => res.json()).then((data) => {
-      if (data.status === "0") {
-        alert(data.result);
-      } else {
+    fetch(
+      `https://api.etherscan.io/api?module=account&action=balance&address=${wallet}&tag=latest&apikey=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status !== 0) {
           setData(data);
-      }
-    });
-
-    fetch(`https://api.etherscan.io/api?module=account&action=txlist&address=${wallet}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.REACT_APP_API_KEY}`)
-      .then((res) => res.json()).then((transactions) => {
-          setTransactions(transactions);
+        }
       });
+
+    fetch(
+      `https://api.etherscan.io/api?module=account&action=txlist&address=${wallet}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${process.env.REACT_APP_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then((transactions) => {
+        setTransactions(transactions);
+      });
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      getWalletData(wallet);
+    }
   }
 
   return (
     <div className="App">
-    <h1>Ethereum Wallet Tracker</h1>
-      <div className="form">
-        <input type="text" placeholder="0x0" className="input" onChange={updateWallet}></input>
-        <button className="submit" onClick={() => getWalletData(wallet)}>Submit</button>
-        <Info wallet={wallet} data={data} transactions={transactions}/>
+      {/* Navbar */}
+      <nav className="navbar">
+        <h1>Ethereum Wallet Tracker</h1>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Enter Wallet Address"
+            className="input"
+            onChange={updateWallet}
+            onKeyDown={handleKeyPress} // Trigger the search on pressing Enter
+          />
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="content">
+        <Info wallet={wallet} data={data} transactions={transactions} />
       </div>
     </div>
   );

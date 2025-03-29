@@ -1,24 +1,109 @@
+/* Gradient Background */
 .App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: radial-gradient(80% 50% at 50% 10%, rgb(0, 73, 82), rgb(0, 29, 39));
+  min-height: 100vh;
+  color: rgb(255, 255, 255);
+  padding: 60px;
+}
+
+/* Navbar */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* Centering content */
   align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+
+.navbar h1 {
+  font-size: 30px;
+  font-family: 'Coolvetica';
+  color: rgb(255, 255, 255);
+
+  text-align: left;
+
+}
+
+/* Search Bar */
+.search-container {
+  display: flex;
+  position: absolute;
+  transform: translateX(-50%); /* This ensures it's exactly centered */
+  left: 50%;
+  gap: 10px;
+  align-items: center;
+  flex: 2; /* Takes up more space to balance the layout */
+  justify-content: center;
+ 
+}
+
+::placeholder{
+  color: white;
+  font-family: 'Coolvetica';
 }
 
 .input {
-  border: 2px #f4f4f4 solid;
-  border-radius: 8px 0 0 8px;
-  padding: 0.5em 0.7em;
-  font-size: 1em;
-  color: #a1a1a1;
-  margin-bottom: 1rem;
+  padding: 10px 10px 10px 30px; /* Adds padding on the left to indent both text and cursor */
+  caret-color: white;
+  font-family: 'Lato';
+  color: white;
+  padding: 8px;
+  border: 2px solid rgb(255, 255, 255);
+  background: transparent;
+  border-radius: 15px;
+  outline: none;
+  width: 500px;
 }
 
 .submit {
-  background: #2759ff;
+  background: #ff8c00;
   color: white;
   border: none;
-  font-size: 1em;
-  padding: 0.5em 1em;
-  border-radius: 0 8px 8px 0;
+  padding: 8px 15px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit:hover {
+  background: #e07b00;
+}
+
+/* Main Content */
+.content {
+  margin-top: 80px;
+}
+
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
+}
+
+
+@font-face {
+  font-family: 'La Belle Aurore';
+  src: url('./assets/fonts/LaBelleAurore.woff2') format('woff2'),
+    url('./assets/fonts/LaBelleAurore.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('./assets/fonts/CoolveticaRg-Regular.woff2') format('woff2'),
+    url('./assets/fonts/CoolveticaRg-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Regular.ttf') format('ttf');
 }
